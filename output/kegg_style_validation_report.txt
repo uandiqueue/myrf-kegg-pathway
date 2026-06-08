@@ -1,0 +1,28 @@
+KEGG-style Pathway Validation Report
+==============================================================
+
+All 10 validation checks PASSED.
+
+==============================================================
+SUMMARY
+==============================================================
+
+Nodes by kegg_node_type:
+  gene: 31
+
+Edges by kegg_edge_subtype:
+  expression: 15
+  repression: 8
+  indirect effect: 7
+  others/unknown: 2
+  activation: 2
+  inhibition: 1
+
+Edges by kgml_type:
+  GErel: 32
+  PPrel: 3
+
+needs_manual_review: 2 edges
+  MAG -> MYRF_gene  [others/unknown]
+  SOX8 -> MYRF_gene  [others/unknown]
+==============================================================

@@ -1,0 +1,4 @@
+.claude/
+claude-resume.txt
+__pycache__/
+*.pyc

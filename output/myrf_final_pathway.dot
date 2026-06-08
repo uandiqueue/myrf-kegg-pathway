@@ -1,0 +1,133 @@
+digraph G {
+rankdir=LR;
+splines=true;
+nodesep=0.5;
+ranksep=1.8;
+fontname=Helvetica;
+bgcolor=white;
+node [fontname=Helvetica, fontsize=11, margin="0.15,0.08"];
+edge [fontname=Helvetica, fontsize=9];
+AATK [label="AATK", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="enzyme | ENSG00000181409"];
+ANGPTL2 [label="ANGPTL2", shape=box, style="filled,rounded", fillcolor="#AED6F1", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000136859"];
+CNTN2 [label="CNTN2", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000184144"];
+CSPG4 [label="CSPG4", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000173546"];
+DUSP15 [label="DUSP15", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="enzyme | ENSG00000149599"];
+EGR2 [label="EGR2", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="transcription_factor | ENSG00000122877"];
+FBXW7 [label="FBXW7", shape=box, style="filled,rounded", fillcolor="#AED6F1", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="enzyme | ENSG00000109670"];
+FYN [label="FYN", shape=box, style="filled,rounded", fillcolor="#AED6F1", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="enzyme | ENSG00000010810"];
+GJB1 [label="GJB1", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000169562"];
+GJC2 [label="GJC2", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000198835"];
+GPR37 [label="GPR37", shape=box, style="filled,rounded", fillcolor="#AED6F1", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000170775"];
+HES5 [label="HES5", shape=box, style="filled,rounded", fillcolor="#AED6F1", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="transcription_factor | ENSG00000197921"];
+ID4 [label="ID4", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="transcription_factor | ENSG00000172201"];
+MAG [label="MAG", shape=box, style="filled,rounded", fillcolor="#AED6F1", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000105695"];
+MAPK1 [label="MAPK1", shape=box, style="filled,rounded", fillcolor="#AED6F1", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="enzyme | ENSG00000102882"];
+MAPK3 [label="MAPK3", shape=box, style="filled,rounded", fillcolor="#AED6F1", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="enzyme | ENSG00000102882"];
+MBP [label="MBP", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000197971"];
+MOG [label="MOG", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000204655"];
+MPZ [label="MPZ", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000158887"];
+MYRF_gene [label="MYRF_gene", shape=box, style="filled,rounded", fillcolor="#FFD700", color="#444444", penwidth=2.5, fontsize=13, fontname="Helvetica-Bold", tooltip="gene | ENSG00000124920"];
+MYRF_protein [label="MYRF_protein", shape=box, style="filled,rounded", fillcolor="#FFD700", color="#444444", penwidth=2.5, fontsize=13, fontname="Helvetica-Bold", tooltip="transcription_factor | ENSG00000124920"];
+NFASC [label="NFASC", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000163531"];
+PDGFRA [label="PDGFRA", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000134853"];
+PLP1 [label="PLP1", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000123560"];
+RFFL [label="RFFL", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="enzyme | ENSG00000092871"];
+SOX10 [label="SOX10", shape=box, style="filled,rounded", fillcolor="#AED6F1", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="transcription_factor | ENSG00000100146"];
+SOX8 [label="SOX8", shape=box, style="filled,rounded", fillcolor="#AED6F1", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="transcription_factor | ENSG00000005513"];
+TF [label="TF", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000091513"];
+TGFB2 [label="TGFB2", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000092969"];
+TMEM98 [label="TMEM98", shape=box, style="filled,rounded", fillcolor="#AED6F1", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000006042"];
+WNT7A [label="WNT7A", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000154764"];
+subgraph {
+rank=source;
+GPR37;
+HES5;
+FBXW7;
+MAPK1;
+ANGPTL2;
+FYN;
+TMEM98;
+MAPK3;
+MAG;
+SOX8;
+SOX10;
+}
+subgraph {
+rank=same;
+MYRF_gene;
+MYRF_protein;
+}
+subgraph {
+rank=sink;
+ID4;
+MPZ;
+PLP1;
+TGFB2;
+AATK;
+CSPG4;
+NFASC;
+WNT7A;
+MBP;
+RFFL;
+GJC2;
+CNTN2;
+TF;
+DUSP15;
+MOG;
+EGR2;
+GJB1;
+PDGFRA;
+}
+TMEM98 -> MYRF_protein [label="", color="#C0392B", fontcolor="#C0392B", style="solid", arrowhead=tee, arrowsize=0.9, penwidth=2.0];
+MAG -> MYRF_gene [label="", color="#7F8C8D", fontcolor="#7F8C8D", style="dashed", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MAG -> MYRF_gene [label="? [review]", color="#95A5A6", fontcolor="#95A5A6", style="dashed", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> MAG [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+GPR37 -> MYRF_gene [label="", color="#7F8C8D", fontcolor="#7F8C8D", style="dashed", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> TF [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> CNTN2 [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> PLP1 [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> MBP [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+SOX10 -> MYRF_gene [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+SOX10 -> MYRF_protein [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> SOX10 [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> AATK [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+HES5 -> MYRF_gene [label="", color="#7F8C8D", fontcolor="#7F8C8D", style="dashed", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> MOG [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> DUSP15 [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+SOX8 -> MYRF_gene [label="? [review]", color="#95A5A6", fontcolor="#95A5A6", style="dashed", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+ANGPTL2 -> MYRF_gene [label="", color="#7F8C8D", fontcolor="#7F8C8D", style="dashed", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+FYN -> MYRF_gene [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+FYN -> MYRF_gene [label="", color="#7F8C8D", fontcolor="#7F8C8D", style="dashed", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MAPK1 -> MYRF_gene [label="", color="#7F8C8D", fontcolor="#7F8C8D", style="dashed", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MAPK3 -> MYRF_gene [label="", color="#7F8C8D", fontcolor="#7F8C8D", style="dashed", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> RFFL [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> NFASC [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> GJC2 [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> GJB1 [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> MPZ [label="", color="#C0392B", fontcolor="#C0392B", style="solid", arrowhead=tee, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> EGR2 [label="", color="#C0392B", fontcolor="#C0392B", style="solid", arrowhead=tee, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> TGFB2 [label="", color="#C0392B", fontcolor="#C0392B", style="solid", arrowhead=tee, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> ID4 [label="", color="#C0392B", fontcolor="#C0392B", style="solid", arrowhead=tee, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> WNT7A [label="", color="#C0392B", fontcolor="#C0392B", style="solid", arrowhead=tee, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> CSPG4 [label="", color="#C0392B", fontcolor="#C0392B", style="solid", arrowhead=tee, arrowsize=0.9, penwidth=2.0];
+MYRF_protein -> PDGFRA [label="", color="#C0392B", fontcolor="#C0392B", style="solid", arrowhead=tee, arrowsize=0.9, penwidth=2.0];
+FBXW7 -> MYRF_gene [label="", color="#C0392B", fontcolor="#C0392B", style="solid", arrowhead=tee, arrowsize=0.9, penwidth=2.0];
+MYRF_gene -> MYRF_protein [label="", color="#27AE60", fontcolor="#27AE60", style="solid", arrowhead=normal, arrowsize=0.9, penwidth=2.0];
+legend_box [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR><TD COLSPAN="2" ALIGN="CENTER"><B>Legend</B></TD></TR>
+<TR><TD COLSPAN="2" ALIGN="CENTER"><I>Node fills</I></TD></TR>
+<TR><TD BGCOLOR="#FFD700">MYRF (core hub)</TD><TD BGCOLOR="#AED6F1">Upstream regulator</TD></TR>
+<TR><TD BGCOLOR="#A9DFBF">Downstream target</TD><TD BGCOLOR="#D5DBDB">Candidate / context</TD></TR>
+<TR><TD COLSPAN="2" ALIGN="CENTER"><I>Edge subtypes present</I></TD></TR>
+<TR><TD COLSPAN="2" ALIGN="LEFT">--&gt; green solid   : protein activation</TD></TR>
+<TR><TD COLSPAN="2" ALIGN="LEFT">--&gt; green solid   : transcriptional activation</TD></TR>
+<TR><TD COLSPAN="2" ALIGN="LEFT">..&gt; grey dashed   : indirect/signalling effect</TD></TR>
+<TR><TD COLSPAN="2" ALIGN="LEFT">--| red solid        : protein inhibition</TD></TR>
+<TR><TD COLSPAN="2" ALIGN="LEFT">?   grey dashed      : unknown / needs review</TD></TR>
+<TR><TD COLSPAN="2" ALIGN="LEFT">--| red solid        : transcriptional repression</TD></TR>
+<TR><TD COLSPAN="2" ALIGN="CENTER"><I>Line width = confidence</I></TD></TR>
+<TR><TD>Strong : thick (2.0)</TD><TD>Moderate : medium (1.2)</TD></TR>
+<TR><TD COLSPAN="2">Weak : thin (0.8) + dashed</TD></TR>
+<TR><TD COLSPAN="2">[ review ] = needs manual review</TD></TR>
+</TABLE>>, shape=none, margin=0, fontname="Helvetica", fontsize=9];
+}
