@@ -162,8 +162,8 @@ def _build_legend(present_subtypes: set[str]) -> str:
         "activation":          "--&gt; green solid   : protein activation",
         "inhibition":          "--| red solid        : protein inhibition",
         "binding/association": "--- blue solid       : protein cooperation/binding",
-        "indirect effect":     "..&gt; grey dashed   : indirect/signalling effect",
-        "ubiquitination":      "+u  orange solid     : ubiquitination",
+        "indirect effect":     "..&gt; dashed        : green positive; red tee negative",
+        "ubiquitination":      "+u  orange tee       : ubiquitination/degradation",
         "phosphorylation":     "+p  orange solid     : phosphorylation",
         "dephosphorylation":   "-p  teal solid       : dephosphorylation",
         "others/unknown":      "?   grey dashed      : unknown / needs review",
@@ -275,7 +275,17 @@ def main() -> int:
         ev_value    = _s(row.get("kegg_edge_value"))
 
         present_subtypes.add(subtype)
-        es = EDGE_STYLE.get(subtype, DEFAULT_EDGE_STYLE)
+        es = dict(EDGE_STYLE.get(subtype, DEFAULT_EDGE_STYLE))
+        dirn = _s(row.get("direction")).lower()
+
+        # Preserve the sign of indirect and degradative mechanisms visually.
+        if subtype == "indirect effect":
+            if dirn == "negative":
+                es.update(color="#C0392B", arrowhead="tee")
+            elif dirn == "positive":
+                es.update(color="#27AE60", arrowhead="normal")
+        elif subtype == "ubiquitination" and dirn == "negative":
+            es.update(arrowhead="tee")
 
         # Confidence → penwidth; Weak → also dash
         penwidth = CONF_PENWIDTH.get(conf, "1.2")

@@ -11,18 +11,16 @@ Nodes by kegg_node_type:
   gene: 31
 
 Edges by kegg_edge_subtype:
-  expression: 15
-  repression: 8
-  indirect effect: 7
-  others/unknown: 2
-  activation: 2
+  expression: 14
+  indirect effect: 8
+  repression: 7
   inhibition: 1
+  binding/association: 1
+  ubiquitination: 1
 
 Edges by kgml_type:
-  GErel: 32
-  PPrel: 3
+  GErel: 26
+  PPrel: 6
 
-needs_manual_review: 2 edges
-  MAG -> MYRF_gene  [others/unknown]
-  SOX8 -> MYRF_gene  [others/unknown]
+needs_manual_review: 0 edges
 ==============================================================

@@ -1,0 +1,9 @@
+name: myrf-pathway
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - pandas=3
+  - openpyxl=3.1
+  - pydot=4
+  - graphviz=14

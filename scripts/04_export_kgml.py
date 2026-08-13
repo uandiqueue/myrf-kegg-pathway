@@ -22,6 +22,7 @@ available; otherwise they are inferred from interaction/level fields.
 
 import csv
 import os
+import shutil
 import sys
 import subprocess
 from xml.dom import minidom
@@ -35,6 +36,7 @@ OUT_DIR    = "output"
 OUT_KGML   = os.path.join(OUT_DIR, "myrf_pathway.kgml")
 OUT_EV     = os.path.join(OUT_DIR, "myrf_pathway_evidence.csv")
 OUT_MAP    = os.path.join(OUT_DIR, "myrf_pathway_entry_id_map.csv")
+OUT_CUSTOM_KGML = os.path.join("custom_kegg", "hsa99999.xml")
 
 NODE_W, NODE_H = 80, 30
 KGML_W, KGML_H, MARGIN = 1200, 900, 80   # KGML canvas dimensions in px
@@ -535,15 +537,14 @@ def main() -> int:
                          else "unknown")
 
         # Count
-        if ksubtype == "expression":
-            n_expr  += 1
-        elif ksubtype == "inhibition":
-            n_inh   += 1
+        if ksubtype in ("expression", "activation"):
+            n_expr += 1
+        elif ksubtype in ("inhibition", "repression", "ubiquitination"):
+            n_inh += 1
         elif ksubtype == "binding/association":
-            n_bind  += 1
+            n_bind += 1
         else:
             n_other += 1
-
         rel = ET.SubElement(pathway, "relation")
         rel.set("entry1", str(e1))
         rel.set("entry2", str(e2))
@@ -593,6 +594,7 @@ def main() -> int:
             "evidence_type":   ev_type_val,
             "source_urls":     evidence,
             "notes":           remarks,
+            "needs_manual_review": _s(row.get("needs_manual_review", "")),
             "section":         _s(bucket_node.get("source_bucket", "")) if hasattr(bucket_node, "get") else "",
         })
 
@@ -616,12 +618,14 @@ def main() -> int:
         f.write(header)
         f.write(xml_body)
 
+    os.makedirs(os.path.dirname(OUT_CUSTOM_KGML), exist_ok=True)
+    shutil.copyfile(OUT_KGML, OUT_CUSTOM_KGML)
     # ── Write evidence CSV ───────────────────────────────────────────────────
     ev_df = pd.DataFrame(evidence_rows, columns=[
         "source", "target", "source_entry_id", "target_entry_id",
         "interaction", "kgml_type", "kgml_subtype",
         "direction", "level", "confidence", "evidence_type",
-        "source_urls", "notes", "section",
+        "source_urls", "notes", "needs_manual_review", "section",
     ])
     # QUOTE_NONNUMERIC wraps every string field in double-quotes so that URLs
     # and adjacent text columns (notes, section) have unambiguous boundaries

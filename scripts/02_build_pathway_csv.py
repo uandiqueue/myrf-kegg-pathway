@@ -159,14 +159,22 @@ def classify_edge(
     pr   = _lower(primary_relationship)
     lvl  = _lower(regulation_level)
     dirn = _lower(direction)
-    ev   = _lower(evidence_strength)
 
-    # Rule 1: Explicitly indirect
-    if "indirectly" in pr:
-        needs_review = ev not in ("strong",)
-        return "indirect effect", "..>", "GErel", needs_review
+    # Explicit molecular mechanisms take precedence over generic sign/level rules.
+    if "ubiquitin" in pr:
+        return "ubiquitination", "+u", "PPrel", False
 
-    # Rule 2: Unknown mechanism
+    if any(term in pr for term in (
+        "physically interact", "binding/association", "functionally cooperates",
+    )):
+        return "binding/association", "---", "PPrel", False
+
+    # Curated indirect effects are review-complete when their sign is known.
+    if "indirect" in pr:
+        ktype = "PPrel" if lvl == "protein" else "GErel"
+        return "indirect effect", "..>", ktype, dirn not in ("positive", "negative")
+
+    # Unknown mechanism remains visibly flagged.
     if "unknown mechanism" in pr:
         ktype = "PPrel" if lvl == "protein" else "GErel"
         return "others/unknown", "?", ktype, True
@@ -241,17 +249,21 @@ def post_classify_dedup(edges: pd.DataFrame) -> pd.DataFrame:
 def finalise_edges(edges: pd.DataFrame) -> pd.DataFrame:
     def _ev_type(bucket: str) -> str:
         b = _s(bucket).lower()
-        for k in ("hTFtarget", "Table S3", "GPT Deep Research",
-                   "UniProt", "Literature", "Gemini"):
+        if "primary literature" in b:
+            return "Primary literature"
+        if "biology" in b:
+            return "Biological mechanism"
+        for k in ("hTFtarget", "Table S3", "UniProt", "Literature"):
             if k.lower() in b:
                 return k
         return _s(bucket)
 
     return pd.DataFrame({
-        "source":              edges["source"],
-        "target":              edges["target"],
-        "kegg_edge_subtype":   edges["kegg_edge_subtype"],
-        "kegg_edge_value":     edges["kegg_edge_value"],
+        "source":               edges["source"],
+        "target":               edges["target"],
+        "primary_relationship": edges["primary_relationship"],
+        "kegg_edge_subtype":    edges["kegg_edge_subtype"],
+        "kegg_edge_value":      edges["kegg_edge_value"],
         "kgml_type":           edges["kgml_type"],
         "direction":           edges["direction"],
         "regulation_level":    edges["regulation_level"],

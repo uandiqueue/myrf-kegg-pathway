@@ -2,3 +2,5 @@
 claude-resume.txt
 __pycache__/
 *.pyc
+graphify-out/
+.audit-env/

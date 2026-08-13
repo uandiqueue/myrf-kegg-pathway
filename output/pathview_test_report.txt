@@ -1,177 +1,23 @@
-================================================================= 
-MYRF Custom KGML Pathway  -  Parse & Compatibility Test Report 
-Generated : 2026-05-21 16:30:05 
-KGML file : C:\Users\Admin\Desktop\S\NUS\Project\Bioinformatics\myrf\myrf-kegg-pathway\output\myrf_pathway.kgml 
-================================================================= 
- 
---- 1. File Check --- 
-File found  : output/myrf_pathway.kgml 
-File size   : 9617 bytes 
- 
---- 2. xml2 Parse Test --- 
-Root element         : pathway 
-Root check           : PASSED 
-pathway/@name        : path:custom_myrf0001 
-pathway/@title       : Custom MYRF-centered oligodendrocyte differentiation pathway 
-pathway/@org         : hsa 
-pathway/@number      : 00001 
- 
-Entry count          : 31 
-Entry ID range       : 1 – 31 
-Unique entry types   : gene 
- 
-  custom: entries    : 3  ← not standard KEGG; Pathview will not auto-map these 
-  hsa:    entries    : 28 
- 
-Graphics elements    : 31 
-  missing x          : 0 
-  missing y          : 0 
-  missing name       : 0 
-  have ensembl_id    : 31 / 31 
-  Graphics check     : PASSED 
- 
-Relation count       : 34 
-Relation types: 
-  GErel : 30 
-  PPrel : 4 
- 
-Subtype counts: 
-  binding/association   : 2  (value: ---) 
-  expression            : 14  (value: -->) 
-  indirect effect       : 7  (value: ..>) 
-  inhibition            : 1  (value: --|) 
-  others/unknown        : 2  (value: ?) 
-  repression            : 7  (value: --|) 
-  ubiquitination        : 1  (value: +u) 
- 
-Relation ID reference check: 
-  All entry1/entry2 IDs resolve to known entries : PASSED 
- 
-MYRF-specific checks: 
-  MYRF_gene entry    : MISSING 
-  MYRF_protein entry : MISSING 
- 
-xml2 parse result    : PASSED 
- 
---- 3. XML Package Parse Test --- 
-XML package parse    : PASSED 
-Root node name       : pathway 
-Entries  (XML pkg)   : 31 
-Relations (XML pkg)  : 34 
- 
---- 4. KEGGgraph Parse Test --- 
-KEGGgraph parse      : PASSED 
-  Nodes              : 31 
-  Edges              : 34 
- 
---- Summary: KGML Parse --- 
-xml2 parse           : PASSED 
-XML pkg parse        : PASSED 
-KEGGgraph parse      : PASSED 
-Entries validated    : 31 
-Relations validated  : 34 
- 
-Note: KEGGgraph failure on custom:SYMBOL entries is EXPECTED. 
-      xml2/XML parse success means the KGML is well-formed XML. 
- 
- 
-================================================================= 
-Part 2: Pathview Compatibility Test 
-Generated : 2026-05-21 16:30:25 
-================================================================= 
- 
---- Setup --- 
-Copied KGML  : output/myrf_pathway.kgml -> custom_kegg/hsa99999.xml 
-KGML size    : 9617 bytes 
- 
---- Gene Data Preparation --- 
-Entrez mapping: 28 / 28 symbols resolved 
-  MBP       -> 4155 
-  MAG       -> 4099 
-  MOG       -> 4340 
-  PLP1      -> 5354 
-  CNTN2     -> 6900 
-  AATK      -> 9625 
-  RFFL      -> 117584 
-  NFASC     -> 23114 
-  GJC2      -> 57165 
-  GJB1      -> 2705 
-  DUSP15    -> 128853 
-  TF        -> 7018 
-  SOX10     -> 6663 
-  SOX8      -> 30812 
-  FYN       -> 2534 
-  MAPK3     -> 5595 
-  MAPK1     -> 5594 
-  FBXW7     -> 55294 
-  GSK3B     -> 2932 
-  TMEM98    -> 26022 
-  MPZ       -> 4359 
-  EGR2      -> 1959 
-  TGFB2     -> 7042 
-  ID4       -> 3400 
-  WNT7A     -> 7476 
-  CSPG4     -> 1464 
-  PDGFRA    -> 5156 
-  MYRF      -> 745 
- 
-gene.data (SYMBOL, 28 genes): MBP, MAG, MOG, PLP1, CNTN2, AATK, ... 
-gene.data (Entrez, 28 genes): 4155, 4099, 4340, 5354, 6900, 9625, ... 
- 
---- Native PNG Check --- 
-Native PNG        : NOT FOUND at custom_kegg/hsa99999.png 
-Native Pathview mode was skipped because custom KGML does not have a matching KEGG-style PNG background. 
- 
---- Pathview Test 1: kegg.native=FALSE  |  gene.idtype=SYMBOL --- 
-  [msg]  'select()' returned 1:1 mapping between keys and columns 
-  [warn] Given subtype 'others/unknown' is not found! 
-  [warn] Given subtype 'others/unknown' is not found! 
-  [msg]  Info: Working in directory C:/Users/Admin/Desktop/S/NUS/Project/Bioinformatics/myrf/myrf-kegg-pathway 
-  [msg]  Info: Writing image file hsa99999.myrf_custom_symbol.pdf 
-Result: RENDERED (pathview returned non-NULL) 
- 
---- Pathview Test 2: kegg.native=FALSE  |  Entrez IDs --- 
-  [warn] Given subtype 'others/unknown' is not found! 
-  [warn] Given subtype 'others/unknown' is not found! 
-  [msg]  Info: Working in directory C:/Users/Admin/Desktop/S/NUS/Project/Bioinformatics/myrf/myrf-kegg-pathway 
-  [msg]  Info: Writing image file hsa99999.myrf_custom_entrez.pdf 
-Result: RENDERED (pathview returned non-NULL) 
- 
---- Output Files --- 
-Pathview output files found: 
-  hsa99999.myrf_custom_entrez.pdf 
-  hsa99999.myrf_custom_symbol.pdf 
- 
-================================================================= 
-RESULT CLASSIFICATION 
-================================================================= 
- 
-Classification : A 
-Description    : KGML parses successfully AND Pathview renders successfully. 
- 
- 
---- Recommended Next Steps --- 
- 
-  Option A  (Pathview-compatible KGML) 
-    1. Add Entrez IDs to data/final_nodes.csv. 
-       Use: AnnotationDbi::mapIds(org.Hs.eg.db, keys=SYMBOL, 
-                                  column='ENTREZID', keytype='SYMBOL') 
-    2. Regenerate KGML with entry name = 'hsa:ENTREZID' for real genes. 
-    3. Represent MYRF_gene / MYRF_protein as a single 'hsa:745' entry 
-       (MYRF Entrez ID per org.Hs.eg.db); use node.data for split display. 
-    4. Re-run this script to confirm Pathview renders. 
- 
-  Option B  (Custom rendering pipeline, no Pathview) 
-    1. Use KEGGgraph + igraph to build the graph object. 
-    2. Render with ggraph / Rgraphviz directly from the KGML XML. 
-    3. Full control over custom:MYRF_gene / MYRF_protein split nodes. 
-    4. No dependency on official KEGG pathway IDs. 
- 
-  Option C  (Python pipeline, already in place) 
-    scripts/03_preview_graph.py already produces a correct SVG via 
-    pydot/Graphviz using the same curated data. This is the most 
-    robust visualisation path for this non-standard pathway. 
- 
-================================================================= 
-END OF REPORT 
-================================================================= 
+MYRF custom KGML / Pathview status
+===================================
+
+Updated: 2026-08-14
+
+The current audited model contains 31 entries and 32 relations.
+Structural, reference, subtype, and artifact-parity checks are performed by:
+  scripts/07_audit_literature.py
+
+Result:
+  PASS — see output/literature_audit_round2.md
+
+R/Pathview was not rerun because Rscript and the required Bioconductor packages
+are not bundled in this repository. The two legacy Pathview PDFs represented an
+older 34-relation model and were removed to prevent them being mistaken for the
+current audited graph.
+
+Authoritative rendered graph:
+  output/myrf_final_pathway.svg
+
+Current synchronized KGML files:
+  output/myrf_pathway.kgml
+  custom_kegg/hsa99999.xml

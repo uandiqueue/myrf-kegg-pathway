@@ -122,13 +122,41 @@ def build_raw_edges(master: pd.DataFrame) -> pd.DataFrame:
 
 # ── Deduplication ─────────────────────────────────────────────────────────────
 
-def deduplicate_edges(edges: pd.DataFrame) -> pd.DataFrame:
-    """Remove rows that share (source, target, regulation_level, primary_relationship)."""
-    return edges.drop_duplicates(
-        subset=["source", "target", "regulation_level", "primary_relationship"],
-        keep="first",
-    ).reset_index(drop=True)
+def _merge_unique(values: pd.Series, separator: str = " ; ") -> str:
+    """Merge delimited evidence without discarding later workbook rows."""
+    merged: list[str] = []
+    for value in values:
+        for item in _s(value).split(";"):
+            item = item.strip()
+            if item and item not in merged:
+                merged.append(item)
+    return separator.join(merged)
 
+
+def _strongest(values: pd.Series) -> str:
+    rank = {"excluded": -1, "weak": 0, "moderate": 1, "strong": 2}
+    cleaned = [_s(v) for v in values if _s(v)]
+    return max(cleaned, key=lambda v: rank.get(v.lower(), 0), default="")
+
+
+def deduplicate_edges(edges: pd.DataFrame) -> pd.DataFrame:
+    """Merge duplicate rows while retaining every citation and note."""
+    keys = [
+        "source", "target", "regulation_level",
+        "primary_relationship", "direction",
+    ]
+    aggregated = (
+        edges.groupby(keys, as_index=False, sort=False, dropna=False)
+        .agg({
+            "gene_symbol": "first",
+            "pathway_position": "first",
+            "confidence": _strongest,
+            "source_bucket": _merge_unique,
+            "source_urls": _merge_unique,
+            "notes": _merge_unique,
+        })
+    )
+    return aggregated[edges.columns].reset_index(drop=True)
 
 # ── MYRF split ────────────────────────────────────────────────────────────────
 
@@ -167,11 +195,11 @@ def apply_myrf_split(edges: pd.DataFrame) -> pd.DataFrame:
         "direction":            "positive",
         "regulation_level":     "gene",
         "confidence":           "Strong",
-        "source_bucket":        "biology",
-        "source_urls":          "",
+        "source_bucket":        "Primary literature",
+        "source_urls":          "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001625",
         "notes": (
-            "Biological fact: MYRF undergoes autoproteolytic cleavage; "
-            "N-terminal fragment translocates to nucleus as active TF."
+            "MYRF is translated as an ER-membrane precursor and undergoes "
+            "autoproteolytic cleavage; the N-terminal trimer enters the nucleus."
         ),
     }
     return pd.concat([edges, pd.DataFrame([synth])], ignore_index=True)
