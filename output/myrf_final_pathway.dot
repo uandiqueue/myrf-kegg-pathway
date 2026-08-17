@@ -40,43 +40,43 @@ TMEM98 [label="TMEM98", shape=box, style="filled,rounded", fillcolor="#AED6F1", 
 WNT7A [label="WNT7A", shape=box, style="filled,rounded", fillcolor="#A9DFBF", color="#444444", penwidth=1.0, fontsize=11, fontname="Helvetica", tooltip="protein | ENSG00000154764"];
 subgraph {
 rank=source;
-SOX10;
-FYN;
-SOX8;
-GPR37;
-MAPK1;
-MAG;
-MAPK3;
-HES5;
-TMEM98;
 ANGPTL2;
 FBXW7;
+FYN;
+GPR37;
+HES5;
+MAG;
+MAPK1;
+MAPK3;
+SOX10;
+SOX8;
+TMEM98;
 }
 subgraph {
 rank=same;
-MYRF_protein;
 MYRF_gene;
+MYRF_protein;
 }
 subgraph {
 rank=sink;
-PLP1;
-MOG;
-GJB1;
-CNTN2;
-MPZ;
-TF;
-EGR2;
-DUSP15;
 AATK;
-TGFB2;
-ID4;
-WNT7A;
-GJC2;
+CNTN2;
 CSPG4;
-PDGFRA;
+DUSP15;
+EGR2;
+GJB1;
+GJC2;
+ID4;
 MBP;
+MOG;
+MPZ;
 NFASC;
+PDGFRA;
+PLP1;
 RFFL;
+TF;
+TGFB2;
+WNT7A;
 }
 TMEM98 -> MYRF_protein [label="", color="#C0392B", fontcolor="#C0392B", style="solid", arrowhead=tee, arrowsize=0.9, penwidth=2.0];
 MAG -> MYRF_protein [label="", color="#27AE60", fontcolor="#27AE60", style="dashed", arrowhead=normal, arrowsize=0.9, penwidth=1.2];

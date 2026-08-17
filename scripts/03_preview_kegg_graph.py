@@ -128,7 +128,9 @@ def _compute_groups(edges_df: pd.DataFrame, valid_ids: set[str]) -> dict[str, st
     to_myrf   = set(edges_df.loc[edges_df["target"].isin({"MYRF_gene", "MYRF_protein"}), "source"])
     from_myrf = set(edges_df.loc[edges_df["source"].isin({"MYRF_gene", "MYRF_protein"}), "target"])
     groups: dict[str, str] = {}
-    for nid in valid_ids:
+    # Sorted so the rank subgraphs below emit in a stable order; set iteration
+    # order varies per process and would otherwise reshuffle the DOT/SVG layout.
+    for nid in sorted(valid_ids):
         if nid in ("MYRF_gene", "MYRF_protein"):
             groups[nid] = "core_hub"
         elif nid in to_myrf:
